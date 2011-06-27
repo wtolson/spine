@@ -226,6 +226,7 @@
       for (var i=0, il = values.length; i < il; i++) {    
         var record = values[i];
         record.newRecord = false;
+        record.id = record.id || Spine.guid();
         this.records[record.id] = record;
       }
 
