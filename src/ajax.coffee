@@ -61,9 +61,12 @@ class Collection extends Base
           success: @recordsResponse(params)
           error: @errorResponse(params)
     
-  fetch: ->
-    @findAll success: (records) =>
-      @model.refresh(records)
+  fetch: (data) ->
+    @findAll
+      data: data
+      processData: true
+      success: (records) =>
+        @model.refresh(records)
     
   recordsResponse: (params) =>
     success = params.success
