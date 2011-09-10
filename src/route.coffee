@@ -81,7 +81,8 @@ class Spine.Route extends Spine.Module
   @getFragment: -> @getHash().replace(hashStrip, "")
   
   @getHost: ->
-    (document.location + "").replace(@getPath() + @getHash(), "")
+    endPart = RegExp @getPath() + @getHash() + "#?$"
+    (document.location + "").replace(endPart, "")
     
   @change: ->
     path = if @history then @getPath() else @getFragment()
